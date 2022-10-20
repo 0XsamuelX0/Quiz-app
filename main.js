@@ -1,6 +1,6 @@
 const quizdata = [
   {
-    prugunta: "¿Cuántos decimales tiene el número pi π?",
+    question: "¿Cuántos decimales tiene el número pi π?",
     a: "Dos",
     b: "Cien",
     c: "Infinito",
@@ -9,12 +9,39 @@ const quizdata = [
     correct: "c",
   },
   {
-    prugunta: "¿Cuánto tiempo tarda la luz del Sol en llegar a la Tierra?",
+    question: "¿Cuánto tiempo tarda la luz del Sol en llegar a la Tierra?",
     a: "12 min",
     b: "1 día",
     c: "12 horas",
     d: "8 min",
     e: "5 segundos",
-    correct: "d"
+    correct: "d",
+  },
+  {
+    question: "¿En qué periodo de la prehistoria fue descubierto el fuego?",
+    a: "Neolítico",
+    b: "Paleolítico",
+    c: "Edad de los metales",
+    d: "Edad de piedra",
+    e: "Edad media",
+    correct: "b",
+  },
+  {
+    question: "¿Cuál es el animal terrestre más grande en la actualidad?",
+    a: "Jirafa",
+    b: "Tiburón blanco",
+    c: "Diplodocus",
+    d: "Ballena azul",
+    e: "Elefante africano",
+    correct: "e",
+  },
+  {
+    question: "¿Qué animal gluglutea?",
+    a: "El pavo",
+    b: "La cacatúa",
+    c: "La guacamaya",
+    d: "La garza",
+    e: "El pato",
+    correct: "a",
   },
 ];
