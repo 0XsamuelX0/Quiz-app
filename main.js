@@ -1,47 +1,100 @@
-const quizdata = [
+const quizData = [
   {
-    question: "¿Cuántos decimales tiene el número pi π?",
-    a: "Dos",
-    b: "Cien",
-    c: "Infinito",
-    d: "Mil",
-    e: "Veinte",
-    correct: "c",
-  },
-  {
-    question: "¿Cuánto tiempo tarda la luz del Sol en llegar a la Tierra?",
-    a: "12 min",
-    b: "1 día",
-    c: "12 horas",
-    d: "8 min",
-    e: "5 segundos",
+    question: "¿Cuál es el país más grande y el más pequeño del mundo?",
+    a: "China y Nauru",
+    b: "Canadá y Mónaco",
+    c: "Estados Unidos y Malta",
+    d: "Rusia y Vaticano",
     correct: "d",
   },
   {
-    question: "¿En qué periodo de la prehistoria fue descubierto el fuego?",
-    a: "Neolítico",
-    b: "Paleolítico",
-    c: "Edad de los metales",
-    d: "Edad de piedra",
-    e: "Edad media",
+    question: "Cuánto tiempo tarda la luz del Sol en llegar a la Tierra?",
+    a: "12 minutos",
+    b: "8 minutos",
+    c: "12 horas",
+    d: "1 día",
     correct: "b",
   },
   {
     question: "¿Cuál es el animal terrestre más grande en la actualidad?",
-    a: "Jirafa",
-    b: "Tiburón blanco",
+    a: "Elefante africano",
+    b: "Ballena azul",
     c: "Diplodocus",
-    d: "Ballena azul",
-    e: "Elefante africano",
-    correct: "e",
-  },
-  {
-    question: "¿Qué animal gluglutea?",
-    a: "El pavo",
-    b: "La cacatúa",
-    c: "La guacamaya",
-    d: "La garza",
-    e: "El pato",
+    d: "Tiburón blanco",
     correct: "a",
   },
+  {
+    question: "¿Cuál es el mayor archipiélago de la Tierra?",
+    a: "Filipinas",
+    b: "Indonesia",
+    c: "Bahamas",
+    d: "Maldivas",
+    correct: "b",
+  },
 ];
+
+const quiz = document.getElementById("quiz");
+const answerEls = document.querySelectorAll(".answer");
+const questionEl = document.getElementById("question");
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+const submitBtn = document.getElementById("submit");
+
+let currentQuiz = 0;
+let score = 0;
+
+loadQuiz();
+
+function loadQuiz() {
+  deselectAnswers();
+
+  const currentQuizData = quizData[currentQuiz];
+
+  questionEl.innerText = currentQuizData.question;
+  a_text.innerText = currentQuizData.a;
+  b_text.innerText = currentQuizData.b;
+  c_text.innerText = currentQuizData.c;
+  d_text.innerText = currentQuizData.d;
+}
+
+function getSelected() {
+  let answer = undefined;
+
+  answerEls.forEach((answerEl) => {
+    if (answerEl.checked) {
+      answer = answerEl.id;
+    }
+  });
+
+  return answer;
+}
+
+function deselectAnswers() {
+  answerEls.forEach((answerEl) => {
+    answerEl.checked = false;
+  });
+}
+
+submitBtn.addEventListener("click", () => {
+  // check to see the answer
+  const answer = getSelected();
+
+  if (answer) {
+    if (answer === quizData[currentQuiz].correct) {
+      score++;
+    }
+
+    currentQuiz++;
+    if (currentQuiz < quizData.length) {
+      loadQuiz();
+    } else {
+      quiz.innerHTML = `
+                <h2>Respondiste correctamente en ${score}/${quizData.length} Preguntas.</h2>
+                
+                <button onclick="location.reload()">Repetir</button>
+            `;
+    }
+  }
+});
